@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/serial_port.o: src/serial_port.cpp.o
+.PHONY : src/serial_port.o
+
+# target to build an object file
+src/serial_port.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.o
+.PHONY : src/serial_port.cpp.o
+
+src/serial_port.i: src/serial_port.cpp.i
+.PHONY : src/serial_port.i
+
+# target to preprocess a source file
+src/serial_port.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.i
+.PHONY : src/serial_port.cpp.i
+
+src/serial_port.s: src/serial_port.cpp.s
+.PHONY : src/serial_port.s
+
+# target to generate assembly for a file
+src/serial_port.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.s
+.PHONY : src/serial_port.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/serial_port.o"
+	@echo "... src/serial_port.i"
+	@echo "... src/serial_port.s"
 .PHONY : help
 
 
