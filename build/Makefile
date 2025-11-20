@@ -129,6 +129,32 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named test_serial_port
+
+# Build rule for target.
+test_serial_port: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_serial_port
+.PHONY : test_serial_port
+
+# fast build rule for target.
+test_serial_port/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/build
+.PHONY : test_serial_port/fast
+
+#=============================================================================
+# Target rules for targets named test_packet_parser
+
+# Build rule for target.
+test_packet_parser: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_packet_parser
+.PHONY : test_packet_parser
+
+# fast build rule for target.
+test_packet_parser/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/build
+.PHONY : test_packet_parser/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -153,12 +179,36 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/packet_parser.o: src/packet_parser.cpp.o
+.PHONY : src/packet_parser.o
+
+# target to build an object file
+src/packet_parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o
+.PHONY : src/packet_parser.cpp.o
+
+src/packet_parser.i: src/packet_parser.cpp.i
+.PHONY : src/packet_parser.i
+
+# target to preprocess a source file
+src/packet_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.i
+.PHONY : src/packet_parser.cpp.i
+
+src/packet_parser.s: src/packet_parser.cpp.s
+.PHONY : src/packet_parser.s
+
+# target to generate assembly for a file
+src/packet_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.s
+.PHONY : src/packet_parser.cpp.s
+
 src/serial_port.o: src/serial_port.cpp.o
 .PHONY : src/serial_port.o
 
 # target to build an object file
 src/serial_port.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.o
 .PHONY : src/serial_port.cpp.o
 
 src/serial_port.i: src/serial_port.cpp.i
@@ -166,7 +216,7 @@ src/serial_port.i: src/serial_port.cpp.i
 
 # target to preprocess a source file
 src/serial_port.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.i
 .PHONY : src/serial_port.cpp.i
 
 src/serial_port.s: src/serial_port.cpp.s
@@ -174,8 +224,56 @@ src/serial_port.s: src/serial_port.cpp.s
 
 # target to generate assembly for a file
 src/serial_port.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/serial_port.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.s
 .PHONY : src/serial_port.cpp.s
+
+test/test_packet_parser.o: test/test_packet_parser.cpp.o
+.PHONY : test/test_packet_parser.o
+
+# target to build an object file
+test/test_packet_parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.o
+.PHONY : test/test_packet_parser.cpp.o
+
+test/test_packet_parser.i: test/test_packet_parser.cpp.i
+.PHONY : test/test_packet_parser.i
+
+# target to preprocess a source file
+test/test_packet_parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.i
+.PHONY : test/test_packet_parser.cpp.i
+
+test/test_packet_parser.s: test/test_packet_parser.cpp.s
+.PHONY : test/test_packet_parser.s
+
+# target to generate assembly for a file
+test/test_packet_parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.s
+.PHONY : test/test_packet_parser.cpp.s
+
+test/test_serial_port.o: test/test_serial_port.cpp.o
+.PHONY : test/test_serial_port.o
+
+# target to build an object file
+test/test_serial_port.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/test/test_serial_port.cpp.o
+.PHONY : test/test_serial_port.cpp.o
+
+test/test_serial_port.i: test/test_serial_port.cpp.i
+.PHONY : test/test_serial_port.i
+
+# target to preprocess a source file
+test/test_serial_port.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/test/test_serial_port.cpp.i
+.PHONY : test/test_serial_port.cpp.i
+
+test/test_serial_port.s: test/test_serial_port.cpp.s
+.PHONY : test/test_serial_port.s
+
+# target to generate assembly for a file
+test/test_serial_port.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/test/test_serial_port.cpp.s
+.PHONY : test/test_serial_port.cpp.s
 
 # Help Target
 help:
@@ -186,12 +284,23 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... test_packet_parser"
+	@echo "... test_serial_port"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/packet_parser.o"
+	@echo "... src/packet_parser.i"
+	@echo "... src/packet_parser.s"
 	@echo "... src/serial_port.o"
 	@echo "... src/serial_port.i"
 	@echo "... src/serial_port.s"
+	@echo "... test/test_packet_parser.o"
+	@echo "... test/test_packet_parser.i"
+	@echo "... test/test_packet_parser.s"
+	@echo "... test/test_serial_port.o"
+	@echo "... test/test_serial_port.i"
+	@echo "... test/test_serial_port.s"
 .PHONY : help
 
 

@@ -64,6 +64,8 @@ CMAKE_BINARY_DIR = /Users/loganchoi/Desktop/ugv-radio-bridge/build
 
 # The main recursive "all" target.
 all: CMakeFiles/main.dir/all
+all: CMakeFiles/test_serial_port.dir/all
+all: CMakeFiles/test_packet_parser.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +74,8 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/test_serial_port.dir/clean
+clean: CMakeFiles/test_packet_parser.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -81,12 +85,12 @@ clean: CMakeFiles/main.dir/clean
 CMakeFiles/main.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=1,2,3 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=1,2 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
@@ -99,6 +103,58 @@ main: CMakeFiles/main.dir/rule
 CMakeFiles/main.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
 .PHONY : CMakeFiles/main.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_serial_port.dir
+
+# All Build rule for target.
+CMakeFiles/test_serial_port.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=6,7,8 "Built target test_serial_port"
+.PHONY : CMakeFiles/test_serial_port.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_serial_port.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_serial_port.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_serial_port.dir/rule
+
+# Convenience name for target.
+test_serial_port: CMakeFiles/test_serial_port.dir/rule
+.PHONY : test_serial_port
+
+# clean rule for target.
+CMakeFiles/test_serial_port.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/clean
+.PHONY : CMakeFiles/test_serial_port.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_packet_parser.dir
+
+# All Build rule for target.
+CMakeFiles/test_packet_parser.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=3,4,5 "Built target test_packet_parser"
+.PHONY : CMakeFiles/test_packet_parser.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_packet_parser.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_packet_parser.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_packet_parser.dir/rule
+
+# Convenience name for target.
+test_packet_parser: CMakeFiles/test_packet_parser.dir/rule
+.PHONY : test_packet_parser
+
+# clean rule for target.
+CMakeFiles/test_packet_parser.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/clean
+.PHONY : CMakeFiles/test_packet_parser.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

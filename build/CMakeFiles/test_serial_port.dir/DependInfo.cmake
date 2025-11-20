@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/loganchoi/Desktop/ugv-radio-bridge/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"
+  "/Users/loganchoi/Desktop/ugv-radio-bridge/src/serial_port.cpp" "CMakeFiles/test_serial_port.dir/src/serial_port.cpp.o" "gcc" "CMakeFiles/test_serial_port.dir/src/serial_port.cpp.o.d"
+  "/Users/loganchoi/Desktop/ugv-radio-bridge/test/test_serial_port.cpp" "CMakeFiles/test_serial_port.dir/test/test_serial_port.cpp.o" "gcc" "CMakeFiles/test_serial_port.dir/test/test_serial_port.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
