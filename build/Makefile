@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named crc16
+
+# Build rule for target.
+crc16: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 crc16
+.PHONY : crc16
+
+# fast build rule for target.
+crc16/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/build
+.PHONY : crc16/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -155,6 +168,32 @@ test_packet_parser/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/build
 .PHONY : test_packet_parser/fast
 
+#=============================================================================
+# Target rules for targets named test_packet_encoder
+
+# Build rule for target.
+test_packet_encoder: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_packet_encoder
+.PHONY : test_packet_encoder
+
+# fast build rule for target.
+test_packet_encoder/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/build
+.PHONY : test_packet_encoder/fast
+
+#=============================================================================
+# Target rules for targets named test_crc_roundtrip
+
+# Build rule for target.
+test_crc_roundtrip: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_crc_roundtrip
+.PHONY : test_crc_roundtrip
+
+# fast build rule for target.
+test_crc_roundtrip/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/build
+.PHONY : test_crc_roundtrip/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -179,12 +218,67 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/crc16.o: src/crc16.cpp.o
+.PHONY : src/crc16.o
+
+# target to build an object file
+src/crc16.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.o
+.PHONY : src/crc16.cpp.o
+
+src/crc16.i: src/crc16.cpp.i
+.PHONY : src/crc16.i
+
+# target to preprocess a source file
+src/crc16.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.i
+.PHONY : src/crc16.cpp.i
+
+src/crc16.s: src/crc16.cpp.s
+.PHONY : src/crc16.s
+
+# target to generate assembly for a file
+src/crc16.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.s
+.PHONY : src/crc16.cpp.s
+
+src/packet_encoder.o: src/packet_encoder.cpp.o
+.PHONY : src/packet_encoder.o
+
+# target to build an object file
+src/packet_encoder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.o
+.PHONY : src/packet_encoder.cpp.o
+
+src/packet_encoder.i: src/packet_encoder.cpp.i
+.PHONY : src/packet_encoder.i
+
+# target to preprocess a source file
+src/packet_encoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.i
+.PHONY : src/packet_encoder.cpp.i
+
+src/packet_encoder.s: src/packet_encoder.cpp.s
+.PHONY : src/packet_encoder.s
+
+# target to generate assembly for a file
+src/packet_encoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.s
+.PHONY : src/packet_encoder.cpp.s
+
 src/packet_parser.o: src/packet_parser.cpp.o
 .PHONY : src/packet_parser.o
 
 # target to build an object file
 src/packet_parser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.o
 .PHONY : src/packet_parser.cpp.o
 
 src/packet_parser.i: src/packet_parser.cpp.i
@@ -193,6 +287,7 @@ src/packet_parser.i: src/packet_parser.cpp.i
 # target to preprocess a source file
 src/packet_parser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.i
 .PHONY : src/packet_parser.cpp.i
 
 src/packet_parser.s: src/packet_parser.cpp.s
@@ -201,6 +296,7 @@ src/packet_parser.s: src/packet_parser.cpp.s
 # target to generate assembly for a file
 src/packet_parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.s
 .PHONY : src/packet_parser.cpp.s
 
 src/serial_port.o: src/serial_port.cpp.o
@@ -226,6 +322,54 @@ src/serial_port.s: src/serial_port.cpp.s
 src/serial_port.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.s
 .PHONY : src/serial_port.cpp.s
+
+test/test_crc_roundtrip.o: test/test_crc_roundtrip.cpp.o
+.PHONY : test/test_crc_roundtrip.o
+
+# target to build an object file
+test/test_crc_roundtrip.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/test/test_crc_roundtrip.cpp.o
+.PHONY : test/test_crc_roundtrip.cpp.o
+
+test/test_crc_roundtrip.i: test/test_crc_roundtrip.cpp.i
+.PHONY : test/test_crc_roundtrip.i
+
+# target to preprocess a source file
+test/test_crc_roundtrip.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/test/test_crc_roundtrip.cpp.i
+.PHONY : test/test_crc_roundtrip.cpp.i
+
+test/test_crc_roundtrip.s: test/test_crc_roundtrip.cpp.s
+.PHONY : test/test_crc_roundtrip.s
+
+# target to generate assembly for a file
+test/test_crc_roundtrip.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/test/test_crc_roundtrip.cpp.s
+.PHONY : test/test_crc_roundtrip.cpp.s
+
+test/test_packet_encoder.o: test/test_packet_encoder.cpp.o
+.PHONY : test/test_packet_encoder.o
+
+# target to build an object file
+test/test_packet_encoder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/test/test_packet_encoder.cpp.o
+.PHONY : test/test_packet_encoder.cpp.o
+
+test/test_packet_encoder.i: test/test_packet_encoder.cpp.i
+.PHONY : test/test_packet_encoder.i
+
+# target to preprocess a source file
+test/test_packet_encoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/test/test_packet_encoder.cpp.i
+.PHONY : test/test_packet_encoder.cpp.i
+
+test/test_packet_encoder.s: test/test_packet_encoder.cpp.s
+.PHONY : test/test_packet_encoder.s
+
+# target to generate assembly for a file
+test/test_packet_encoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/test/test_packet_encoder.cpp.s
+.PHONY : test/test_packet_encoder.cpp.s
 
 test/test_packet_parser.o: test/test_packet_parser.cpp.o
 .PHONY : test/test_packet_parser.o
@@ -283,18 +427,33 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... crc16"
 	@echo "... main"
+	@echo "... test_crc_roundtrip"
+	@echo "... test_packet_encoder"
 	@echo "... test_packet_parser"
 	@echo "... test_serial_port"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/crc16.o"
+	@echo "... src/crc16.i"
+	@echo "... src/crc16.s"
+	@echo "... src/packet_encoder.o"
+	@echo "... src/packet_encoder.i"
+	@echo "... src/packet_encoder.s"
 	@echo "... src/packet_parser.o"
 	@echo "... src/packet_parser.i"
 	@echo "... src/packet_parser.s"
 	@echo "... src/serial_port.o"
 	@echo "... src/serial_port.i"
 	@echo "... src/serial_port.s"
+	@echo "... test/test_crc_roundtrip.o"
+	@echo "... test/test_crc_roundtrip.i"
+	@echo "... test/test_crc_roundtrip.s"
+	@echo "... test/test_packet_encoder.o"
+	@echo "... test/test_packet_encoder.i"
+	@echo "... test/test_packet_encoder.s"
 	@echo "... test/test_packet_parser.o"
 	@echo "... test/test_packet_parser.i"
 	@echo "... test/test_packet_parser.s"

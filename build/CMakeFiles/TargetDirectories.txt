@@ -1,5 +1,8 @@
+/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/crc16.dir
 /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/main.dir
 /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/test_serial_port.dir
 /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/test_packet_parser.dir
+/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/test_packet_encoder.dir
+/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/test_crc_roundtrip.dir
 /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/edit_cache.dir
 /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles/rebuild_cache.dir

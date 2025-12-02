@@ -6,6 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
+add_library(crc16
+    src/crc16.cpp
+)
+
 add_executable(main
     main.cpp
 )
@@ -18,4 +22,28 @@ add_executable(test_serial_port
 add_executable(test_packet_parser
     test/test_packet_parser.cpp
     src/packet_parser.cpp
+    src/packet_encoder.cpp
+)
+
+add_executable(test_packet_encoder
+    test/test_packet_encoder.cpp
+    src/packet_encoder.cpp
+)
+
+add_executable(test_crc_roundtrip
+    test/test_crc_roundtrip.cpp
+    src/packet_parser.cpp
+    src/packet_encoder.cpp
+)
+
+target_link_libraries(test_packet_parser
+    crc16
+)
+
+target_link_libraries(test_packet_encoder
+    crc16
+)
+
+target_link_libraries(test_crc_roundtrip
+    crc16
 )

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.o"
+  "CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.o.d"
   "CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o"
   "CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o.d"
   "CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.o"

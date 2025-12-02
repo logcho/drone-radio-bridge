@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/loganchoi/Desktop/ugv-radio-bridge/src/packet_encoder.cpp" "CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.o" "gcc" "CMakeFiles/test_packet_parser.dir/src/packet_encoder.cpp.o.d"
   "/Users/loganchoi/Desktop/ugv-radio-bridge/src/packet_parser.cpp" "CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o" "gcc" "CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o.d"
   "/Users/loganchoi/Desktop/ugv-radio-bridge/test/test_packet_parser.cpp" "CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.o" "gcc" "CMakeFiles/test_packet_parser.dir/test/test_packet_parser.cpp.o.d"
   )

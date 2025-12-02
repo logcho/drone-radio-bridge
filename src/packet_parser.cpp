@@ -1,4 +1,5 @@
 #include "packet_parser.hpp"
+#include "crc16.hpp"
 #include <iostream>
 
 PacketParser::PacketParser() {}
@@ -27,6 +28,17 @@ std::vector<DecodedPacket> PacketParser::feed(const std::vector<uint8_t>& data){
         // extract packet 
         std::vector<uint8_t> packet(buffer_.begin(), buffer_.begin() + total_len);
         buffer_.erase(buffer_.begin(), buffer_.begin() + total_len);
+
+        // Validate CRC
+        uint16_t crc_expected = packet[total_len - 2] | (packet[total_len - 1] << 8);
+
+        uint16_t crc_calc = crc16_ccitt_false(packet.data() + 3, total_len - 5);
+        // ^ packet body = MSG_ID, SEQ, PAYLOAD…
+
+        if (crc_calc != crc_expected) {
+            // Bad packet, discard
+            continue;
+        }
 
         // parse packet field 
         uint8_t msg_id = packet[3];
