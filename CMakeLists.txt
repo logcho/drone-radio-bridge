@@ -25,9 +25,17 @@ add_executable(test_packet_parser
     src/packet_encoder.cpp
 )
 
+target_link_libraries(test_packet_parser
+    crc16
+)
+
 add_executable(test_packet_encoder
     test/test_packet_encoder.cpp
     src/packet_encoder.cpp
+)
+
+target_link_libraries(test_packet_encoder
+    crc16
 )
 
 add_executable(test_crc_roundtrip
@@ -36,14 +44,16 @@ add_executable(test_crc_roundtrip
     src/packet_encoder.cpp
 )
 
-target_link_libraries(test_packet_parser
-    crc16
-)
-
-target_link_libraries(test_packet_encoder
-    crc16
-)
-
 target_link_libraries(test_crc_roundtrip
     crc16
 )
+
+add_executable(test_serial_roundtrip
+    test/test_serial_roundtrip.cpp
+    src/serial_port.cpp
+    src/packet_parser.cpp
+    src/packet_encoder.cpp
+    src/crc16.cpp
+)
+
+target_include_directories(test_serial_roundtrip PUBLIC include)

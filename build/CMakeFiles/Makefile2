@@ -69,6 +69,7 @@ all: CMakeFiles/test_serial_port.dir/all
 all: CMakeFiles/test_packet_parser.dir/all
 all: CMakeFiles/test_packet_encoder.dir/all
 all: CMakeFiles/test_crc_roundtrip.dir/all
+all: CMakeFiles/test_serial_roundtrip.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -82,6 +83,7 @@ clean: CMakeFiles/test_serial_port.dir/clean
 clean: CMakeFiles/test_packet_parser.dir/clean
 clean: CMakeFiles/test_packet_encoder.dir/clean
 clean: CMakeFiles/test_crc_roundtrip.dir/clean
+clean: CMakeFiles/test_serial_roundtrip.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -239,6 +241,32 @@ test_crc_roundtrip: CMakeFiles/test_crc_roundtrip.dir/rule
 CMakeFiles/test_crc_roundtrip.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/clean
 .PHONY : CMakeFiles/test_crc_roundtrip.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_serial_roundtrip.dir
+
+# All Build rule for target.
+CMakeFiles/test_serial_roundtrip.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=19,20,21,22,23,24 "Built target test_serial_roundtrip"
+.PHONY : CMakeFiles/test_serial_roundtrip.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_serial_roundtrip.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_serial_roundtrip.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_serial_roundtrip.dir/rule
+
+# Convenience name for target.
+test_serial_roundtrip: CMakeFiles/test_serial_roundtrip.dir/rule
+.PHONY : test_serial_roundtrip
+
+# clean rule for target.
+CMakeFiles/test_serial_roundtrip.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/clean
+.PHONY : CMakeFiles/test_serial_roundtrip.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

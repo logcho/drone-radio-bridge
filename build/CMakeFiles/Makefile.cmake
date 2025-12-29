@@ -53,4 +53,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test_packet_parser.dir/DependInfo.cmake"
   "CMakeFiles/test_packet_encoder.dir/DependInfo.cmake"
   "CMakeFiles/test_crc_roundtrip.dir/DependInfo.cmake"
+  "CMakeFiles/test_serial_roundtrip.dir/DependInfo.cmake"
   )
