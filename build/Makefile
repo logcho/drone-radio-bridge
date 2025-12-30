@@ -207,6 +207,19 @@ test_serial_roundtrip/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/build
 .PHONY : test_serial_roundtrip/fast
 
+#=============================================================================
+# Target rules for targets named test_local_integration
+
+# Build rule for target.
+test_local_integration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_local_integration
+.PHONY : test_local_integration
+
+# fast build rule for target.
+test_local_integration/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/build
+.PHONY : test_local_integration/fast
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -238,6 +251,7 @@ src/crc16.o: src/crc16.cpp.o
 src/crc16.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/crc16.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/crc16.cpp.o
 .PHONY : src/crc16.cpp.o
 
 src/crc16.i: src/crc16.cpp.i
@@ -247,6 +261,7 @@ src/crc16.i: src/crc16.cpp.i
 src/crc16.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/crc16.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/crc16.cpp.i
 .PHONY : src/crc16.cpp.i
 
 src/crc16.s: src/crc16.cpp.s
@@ -256,6 +271,7 @@ src/crc16.s: src/crc16.cpp.s
 src/crc16.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/crc16.dir/build.make CMakeFiles/crc16.dir/src/crc16.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/crc16.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/crc16.cpp.s
 .PHONY : src/crc16.cpp.s
 
 src/packet_encoder.o: src/packet_encoder.cpp.o
@@ -267,6 +283,7 @@ src/packet_encoder.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_encoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_encoder.cpp.o
 .PHONY : src/packet_encoder.cpp.o
 
 src/packet_encoder.i: src/packet_encoder.cpp.i
@@ -278,6 +295,7 @@ src/packet_encoder.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_encoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_encoder.cpp.i
 .PHONY : src/packet_encoder.cpp.i
 
 src/packet_encoder.s: src/packet_encoder.cpp.s
@@ -289,6 +307,7 @@ src/packet_encoder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/src/packet_encoder.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_encoder.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_encoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_encoder.cpp.s
 .PHONY : src/packet_encoder.cpp.s
 
 src/packet_parser.o: src/packet_parser.cpp.o
@@ -299,6 +318,7 @@ src/packet_parser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_parser.cpp.o
 .PHONY : src/packet_parser.cpp.o
 
 src/packet_parser.i: src/packet_parser.cpp.i
@@ -309,6 +329,7 @@ src/packet_parser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_parser.cpp.i
 .PHONY : src/packet_parser.cpp.i
 
 src/packet_parser.s: src/packet_parser.cpp.s
@@ -319,6 +340,7 @@ src/packet_parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/src/packet_parser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/src/packet_parser.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/packet_parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/packet_parser.cpp.s
 .PHONY : src/packet_parser.cpp.s
 
 src/serial_port.o: src/serial_port.cpp.o
@@ -328,6 +350,7 @@ src/serial_port.o: src/serial_port.cpp.o
 src/serial_port.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/serial_port.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/serial_port.cpp.o
 .PHONY : src/serial_port.cpp.o
 
 src/serial_port.i: src/serial_port.cpp.i
@@ -337,6 +360,7 @@ src/serial_port.i: src/serial_port.cpp.i
 src/serial_port.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/serial_port.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/serial_port.cpp.i
 .PHONY : src/serial_port.cpp.i
 
 src/serial_port.s: src/serial_port.cpp.s
@@ -346,6 +370,7 @@ src/serial_port.s: src/serial_port.cpp.s
 src/serial_port.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/src/serial_port.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/src/serial_port.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/src/serial_port.cpp.s
 .PHONY : src/serial_port.cpp.s
 
 test/test_crc_roundtrip.o: test/test_crc_roundtrip.cpp.o
@@ -371,6 +396,30 @@ test/test_crc_roundtrip.s: test/test_crc_roundtrip.cpp.s
 test/test_crc_roundtrip.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_crc_roundtrip.dir/build.make CMakeFiles/test_crc_roundtrip.dir/test/test_crc_roundtrip.cpp.s
 .PHONY : test/test_crc_roundtrip.cpp.s
+
+test/test_local_integration.o: test/test_local_integration.cpp.o
+.PHONY : test/test_local_integration.o
+
+# target to build an object file
+test/test_local_integration.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/test/test_local_integration.cpp.o
+.PHONY : test/test_local_integration.cpp.o
+
+test/test_local_integration.i: test/test_local_integration.cpp.i
+.PHONY : test/test_local_integration.i
+
+# target to preprocess a source file
+test/test_local_integration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/test/test_local_integration.cpp.i
+.PHONY : test/test_local_integration.cpp.i
+
+test/test_local_integration.s: test/test_local_integration.cpp.s
+.PHONY : test/test_local_integration.s
+
+# target to generate assembly for a file
+test/test_local_integration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/test/test_local_integration.cpp.s
+.PHONY : test/test_local_integration.cpp.s
 
 test/test_packet_encoder.o: test/test_packet_encoder.cpp.o
 .PHONY : test/test_packet_encoder.o
@@ -479,6 +528,7 @@ help:
 	@echo "... crc16"
 	@echo "... main"
 	@echo "... test_crc_roundtrip"
+	@echo "... test_local_integration"
 	@echo "... test_packet_encoder"
 	@echo "... test_packet_parser"
 	@echo "... test_serial_port"
@@ -501,6 +551,9 @@ help:
 	@echo "... test/test_crc_roundtrip.o"
 	@echo "... test/test_crc_roundtrip.i"
 	@echo "... test/test_crc_roundtrip.s"
+	@echo "... test/test_local_integration.o"
+	@echo "... test/test_local_integration.i"
+	@echo "... test/test_local_integration.s"
 	@echo "... test/test_packet_encoder.o"
 	@echo "... test/test_packet_encoder.i"
 	@echo "... test/test_packet_encoder.s"

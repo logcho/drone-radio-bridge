@@ -57,3 +57,11 @@ add_executable(test_serial_roundtrip
 )
 
 target_include_directories(test_serial_roundtrip PUBLIC include)
+
+add_executable(test_local_integration
+    test/test_local_integration.cpp
+    src/serial_port.cpp
+    src/packet_parser.cpp
+    src/packet_encoder.cpp
+    src/crc16.cpp
+)

@@ -70,6 +70,7 @@ all: CMakeFiles/test_packet_parser.dir/all
 all: CMakeFiles/test_packet_encoder.dir/all
 all: CMakeFiles/test_crc_roundtrip.dir/all
 all: CMakeFiles/test_serial_roundtrip.dir/all
+all: CMakeFiles/test_local_integration.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -84,6 +85,7 @@ clean: CMakeFiles/test_packet_parser.dir/clean
 clean: CMakeFiles/test_packet_encoder.dir/clean
 clean: CMakeFiles/test_crc_roundtrip.dir/clean
 clean: CMakeFiles/test_serial_roundtrip.dir/clean
+clean: CMakeFiles/test_local_integration.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -145,7 +147,7 @@ CMakeFiles/main.dir/clean:
 CMakeFiles/test_serial_port.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_port.dir/build.make CMakeFiles/test_serial_port.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=16,17,18 "Built target test_serial_port"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=22,23,24 "Built target test_serial_port"
 .PHONY : CMakeFiles/test_serial_port.dir/all
 
 # Build rule for subdir invocation for target.
@@ -171,7 +173,7 @@ CMakeFiles/test_serial_port.dir/clean:
 CMakeFiles/test_packet_parser.dir/all: CMakeFiles/crc16.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_parser.dir/build.make CMakeFiles/test_packet_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=12,13,14,15 "Built target test_packet_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=18,19,20,21 "Built target test_packet_parser"
 .PHONY : CMakeFiles/test_packet_parser.dir/all
 
 # Build rule for subdir invocation for target.
@@ -197,7 +199,7 @@ CMakeFiles/test_packet_parser.dir/clean:
 CMakeFiles/test_packet_encoder.dir/all: CMakeFiles/crc16.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_packet_encoder.dir/build.make CMakeFiles/test_packet_encoder.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=9,10,11 "Built target test_packet_encoder"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=15,16,17 "Built target test_packet_encoder"
 .PHONY : CMakeFiles/test_packet_encoder.dir/all
 
 # Build rule for subdir invocation for target.
@@ -249,7 +251,7 @@ CMakeFiles/test_crc_roundtrip.dir/clean:
 CMakeFiles/test_serial_roundtrip.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=19,20,21,22,23,24 "Built target test_serial_roundtrip"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=25,26,27,28,29,30 "Built target test_serial_roundtrip"
 .PHONY : CMakeFiles/test_serial_roundtrip.dir/all
 
 # Build rule for subdir invocation for target.
@@ -267,6 +269,32 @@ test_serial_roundtrip: CMakeFiles/test_serial_roundtrip.dir/rule
 CMakeFiles/test_serial_roundtrip.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_serial_roundtrip.dir/build.make CMakeFiles/test_serial_roundtrip.dir/clean
 .PHONY : CMakeFiles/test_serial_roundtrip.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_local_integration.dir
+
+# All Build rule for target.
+CMakeFiles/test_local_integration.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles --progress-num=9,10,11,12,13,14 "Built target test_local_integration"
+.PHONY : CMakeFiles/test_local_integration.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_local_integration.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_local_integration.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/loganchoi/Desktop/ugv-radio-bridge/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_local_integration.dir/rule
+
+# Convenience name for target.
+test_local_integration: CMakeFiles/test_local_integration.dir/rule
+.PHONY : test_local_integration
+
+# clean rule for target.
+CMakeFiles/test_local_integration.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_local_integration.dir/build.make CMakeFiles/test_local_integration.dir/clean
+.PHONY : CMakeFiles/test_local_integration.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
