@@ -1,4 +1,4 @@
-# ugv-radio-bridge
+# drone-radio-bridge
 
 **Jetson Nano &harr; Radio Module &harr; Ground Station**
 

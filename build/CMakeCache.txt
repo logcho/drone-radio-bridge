@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//Build ROS2 node
+BUILD_ROS2:BOOL=OFF
+
 //Value Computed by CMake
 Bridge_BINARY_DIR:STATIC=/Users/loganchoi/Desktop/ugv-radio-bridge/build
 

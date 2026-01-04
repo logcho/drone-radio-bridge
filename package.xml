@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>ugv_radio_bridge</name>
+  <version>0.1.0</version>
+  <description>UGV radio communication bridge</description>
+
+  <maintainer email="lschoi@smu.edu">Logan Choi</maintainer>
+  <license>MIT</license>
+
+  <!-- These are ROS2 dependencies (used later) -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

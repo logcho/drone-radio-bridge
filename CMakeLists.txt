@@ -4,6 +4,8 @@ project(Bridge LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+option(BUILD_ROS2 "Build ROS2 node" OFF)
+
 include_directories(include)
 
 add_library(crc16
@@ -65,3 +67,32 @@ add_executable(test_local_integration
     src/packet_encoder.cpp
     src/crc16.cpp
 )
+
+if(BUILD_ROS2)
+  message(STATUS "Building ROS2 radio bridge node")
+
+  find_package(ament_cmake REQUIRED)
+  find_package(rclcpp REQUIRED)
+  find_package(geometry_msgs REQUIRED)
+
+  add_executable(radio_bridge_node
+    src/radio_bridge_node_ros2.cpp
+    src/serial_port.cpp
+    src/packet_parser.cpp
+    src/packet_encoder.cpp
+    src/crc16.cpp
+  )
+
+  target_compile_definitions(radio_bridge_node PRIVATE BUILD_ROS2)
+
+  ament_target_dependencies(radio_bridge_node
+    rclcpp
+    geometry_msgs
+  )
+
+  install(TARGETS radio_bridge_node
+    DESTINATION lib/${PROJECT_NAME}
+  )
+
+  ament_package()
+endif()
