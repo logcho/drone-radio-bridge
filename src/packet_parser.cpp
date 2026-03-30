@@ -14,6 +14,7 @@ std::vector<DecodedPacket> PacketParser::feed(const std::vector<uint8_t>& data){
     while(buffer_.size() >= 4){
 
         if(buffer_[0] != 0xAA || buffer_[1] != 0x55){
+            // std::cerr << "Parser: Bad sync byte: 0x" << std::hex << (int)buffer_[0] << std::dec << "\n";
             buffer_.erase(buffer_.begin());
             continue;
         }
@@ -36,7 +37,8 @@ std::vector<DecodedPacket> PacketParser::feed(const std::vector<uint8_t>& data){
         // ^ packet body = MSG_ID, SEQ, PAYLOAD…
 
         if (crc_calc != crc_expected) {
-            // Bad packet, discard
+            std::cerr << "Parser: CRC mismatch! calc=0x" << std::hex << crc_calc 
+                      << " expected=0x" << crc_expected << std::dec << " (discarding packet)\n";
             continue;
         }
 

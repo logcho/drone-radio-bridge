@@ -17,6 +17,8 @@ class SerialPort {
         int writeBytes(const uint8_t* buf, size_t size);
 
     private:
+        int baudToConstant(int baudrate);
+
         std::string device_;
         int baudrate_;
         int fd_;

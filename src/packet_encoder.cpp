@@ -3,11 +3,6 @@
 #include <cstring> // for memcpy
 
 
-// temp CRC placeholder
-static uint16_t fake_crc16(const uint8_t* data, size_t len){
-    return 0xABCD;  // placeholder until real CRC added
-}
-
 std::vector<uint8_t> Encoder::encodeCmdVel(uint8_t seq, float lin_x, float ang_z){
     uint8_t msg_id = 0x02; // CMD_VEL
 

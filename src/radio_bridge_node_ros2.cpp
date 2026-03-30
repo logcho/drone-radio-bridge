@@ -28,9 +28,11 @@ public:
     serial_("/dev/ttyUSB0", 57600)
   {
     if (!serial_.openPort()) {
-      RCLCPP_ERROR(get_logger(), "Failed to open serial port");
+      RCLCPP_FATAL(get_logger(), "Failed to open serial port: %s at %d baud", 
+                   "/dev/ttyUSB0", 57600);
+      throw std::runtime_error("Serial port initialization failed");
     } else {
-      RCLCPP_INFO(get_logger(), "Serial port opened");
+      RCLCPP_INFO(get_logger(), "Serial port opened on /dev/ttyUSB0 at 57600 baud");
     }
 
     cmd_vel_sub_ = create_subscription<geometry_msgs::msg::Twist>(
@@ -57,13 +59,26 @@ private:
       (float)msg->linear.x,
       (float)msg->angular.z
     );
-    serial_.writeBytes(pkt.data(), pkt.size());
+    int written = serial_.writeBytes(pkt.data(), pkt.size());
+    if (written < 0) {
+      RCLCPP_ERROR(get_logger(), "Failed to write %zu bytes to serial port", pkt.size());
+    } else if ((size_t)written < pkt.size()) {
+      RCLCPP_WARN(get_logger(), "Partial write: %d of %zu bytes", written, pkt.size());
+    } else {
+      RCLCPP_DEBUG(get_logger(), "TX seq=%u %zu bytes", seq_ - 1, pkt.size());
+    }
   }
 
   void pollSerial() {
     uint8_t buf[256];
     int n = serial_.readBytes(buf, sizeof(buf));
-    if (n <= 0) return;
+    if (n < 0) {
+      RCLCPP_ERROR(get_logger(), "Serial read error");
+      return;
+    }
+    if (n == 0) return;
+
+    RCLCPP_DEBUG(get_logger(), "RX %d raw bytes", n);
 
     auto packets = parser_.feed({buf, buf + n});
     for (auto &p : packets) {
