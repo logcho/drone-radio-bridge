@@ -137,3 +137,36 @@ This ensures:
 - After 500 ms &larr; FAILSAFE
 - Sends TELE_STATUS with status_id = 1
 - Motors go to safe stop
+
+---
+
+## How to Build and Run (ROS 2)
+
+This project can be built as a standalone C++ library/executable or as a ROS 2 node. To build and run it as a ROS 2 node on your Jetson Nano:
+
+### 1. Build the Node
+
+Place the `ugv-radio-bridge` folder inside the `src/` directory of your ROS 2 workspace (e.g., `~/ros2_ws`). Then compile the space with the `BUILD_ROS2` CMake flag enabled:
+
+```bash
+cd ~/ros2_ws
+colcon build --packages-select Bridge --cmake-args -DBUILD_ROS2=ON
+```
+
+### 2. Run the Node
+
+After building, source your workspace and run the executable:
+
+```bash
+source install/setup.bash
+ros2 run Bridge radio_bridge_node
+```
+
+### 3. Test the Node
+
+You can open a separate terminal, source the workspace, and publish a test payload to `/cmd_vel` to verify the node is transmitting:
+
+```bash
+source install/setup.bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: -0.5}}" -1
+```
