@@ -19,22 +19,27 @@ source install/setup.bash
 ```
 
 ## Running the Node
+Before starting the node, you should ensure your user has the correct permissions to access the serial port. You can grant full access with:
+```bash
+sudo chmod 777 /dev/ttyUSB0
+```
+
 Start the ROS2 node by executing:
 ```bash
 ros2 run ugv_radio_bridge radio_bridge_node
 ```
 
 ### Specifying the Serial Port
-By default, the node uses a placeholder `/dev/cu.usbserial-00000000` (Mac placeholder format). Ensure you change this to the actual port where your radio is physically located. 
+By default, the node uses `/dev/ttyUSB0` (Standard Linux format). Ensure you change this to the actual port where your radio is physically located if it differs. 
 
 You can pass the serial port dynamically using `--ros-args`:
-**Mac/macOS:**
-```bash
-ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/cu.usbserial-A900XXXX
-```
 **Linux/Ubuntu:**
 ```bash
 ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/ttyUSB0
+```
+**Mac/macOS:**
+```bash
+ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/cu.usbserial-A900XXXX
 ```
 
 ## How to Test and Send Messages
@@ -44,7 +49,7 @@ Once the node is active, you can send strings to the remote radio by publishing 
 ### 1. Send an Outgoing Radio Message
 Use the standard ROS2 publishing command to write out to the serial interface:
 ```bash
-ros2 topic pub --once /radio_tx std_msgs/msg/String "{data: 'Hello Radio World!'}"
+ros2 topic pub --once /radio_tx std_msgs/msg/String '{data: "Hello Radio World!"}'
 ```
 *Note: A newline `\n` is automatically added to the end of the data being fired out to the serial port.*
 
@@ -56,6 +61,9 @@ ros2 topic echo /radio_rx
 *Note: the node will not publish to the topic unless a terminal newline character `\n` is detected over the serial connection.*
 
 ## Additional Information
-- **Baud Rate:** Preconfigured heavily for internal `115200` baud polling. Ensure your connecting telemetry radios have matching settings. You can edit this directly in `src/radio_bridge_node.cpp` if an alteration is required.
+- **Baud Rate:** Defaults to `57600`, which is the standard for most telemetry radios. You can override this using the `baud_rate` ROS parameter:
+  ```bash
+  ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/cu... -p baud_rate:=115200
+  ```
 - **Data Formatting:** The string parsing inherently expects new lines line-terminating characters (`\n`). If trailing carriage returns (`\r`) exist from the transmitting computer, they are stripped automatically prior to being sent via standard ROS2 logs.
 - **Non-blocking Flow:** There is no hardware flow control overhead implemented here (RTS/CTS options are actively removed in code). It's uniquely built for lightweight telemetry streams.

@@ -9,8 +9,11 @@ class RadioBridgeNode : public rclcpp::Node {
 public:
     RadioBridgeNode() : Node("radio_bridge"), serial_fd_(-1) {
         // Declare and get the serial port parameter
-        this->declare_parameter<std::string>("serial_port", "/dev/cu.usbserial-00000000"); // Standard mac serial format placeholder
+        this->declare_parameter<std::string>("serial_port", "/dev/ttyUSB0"); // Standard Linux serial format
         std::string port_name = this->get_parameter("serial_port").as_string();
+
+        this->declare_parameter<int>("baud_rate", 57600);
+        int baud_rate = this->get_parameter("baud_rate").as_int();
 
         // Publisher for strings received FROM the radio
         publisher_ = this->create_publisher<std_msgs::msg::String>("radio_rx", 10);
@@ -22,7 +25,7 @@ public:
         );
 
         // Initialize Serial Port
-        if (init_serial(port_name)) {
+        if (init_serial(port_name, baud_rate)) {
             RCLCPP_INFO(this->get_logger(), "Serial port %s opened successfully.", port_name.c_str());
             
             // Timer for checking incoming data from serial at 100Hz
@@ -46,7 +49,7 @@ public:
     }
 
 private:
-    bool init_serial(const std::string& port_name) {
+    bool init_serial(const std::string& port_name, int baud_rate) {
         serial_fd_ = open(port_name.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
         if (serial_fd_ < 0) {
             return false;
@@ -57,9 +60,19 @@ private:
             return false;
         }
 
-        // Set Baud Rate to 115200 (standard for many radios like SiK Telemetry)
-        cfsetospeed(&tty, B115200);
-        cfsetispeed(&tty, B115200);
+        // Map integer to POSIX speed constant
+        speed_t speed;
+        switch (baud_rate) {
+            case 9600: speed = B9600; break;
+            case 19200: speed = B19200; break;
+            case 38400: speed = B38400; break;
+            case 57600: speed = B57600; break;
+            case 115200: speed = B115200; break;
+            default: speed = B57600; break;
+        }
+
+        cfsetospeed(&tty, speed);
+        cfsetispeed(&tty, speed);
 
         tty.c_cflag |= (CLOCAL | CREAD);    // Enable receiver, ignore modem control lines
         tty.c_cflag &= ~CSIZE;
@@ -68,6 +81,9 @@ private:
         tty.c_cflag &= ~CSTOPB;             // 1 stop bit
         tty.c_cflag &= ~CRTSCTS;            // Disable hardware flow control
 
+        tty.c_iflag &= ~(IXON | IXOFF | IXANY); // Disable software flow control
+        tty.c_iflag &= ~(IGNBRK|BRKINT|PARMRK|ISTRIP|INLCR|IGNCR|ICRNL); // Disable special char processing
+        
         tty.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); // Raw input
         tty.c_oflag &= ~OPOST;                          // Raw output
 
