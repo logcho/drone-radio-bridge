@@ -42,23 +42,110 @@ ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/ttyU
 ros2 run ugv_radio_bridge radio_bridge_node --ros-args -p serial_port:=/dev/cu.usbserial-A900XXXX
 ```
 
-## How to Test and Send Messages
+## System Architecture & Running the Nodes
 
-Once the node is active, you can send strings to the remote radio by publishing to the `radio_tx` topic. 
+To run the complete hardware-to-software architecture, you should spin up the base serial radio and the high-level ROS translator in tandem.
 
-### 1. Send an Outgoing Radio Message
-Use the standard ROS2 publishing command to write out to the serial interface:
+**1. Start the Base Radio Bridge**
 ```bash
-ros2 topic pub --once /radio_tx std_msgs/msg/String '{data: "Hello Radio World!"}'
+# This handles the raw serial hardware link
+ros2 run ugv_radio_bridge radio_bridge_node
 ```
-*Note: A newline `\n` is automatically added to the end of the data being fired out to the serial port.*
 
-### 2. Listen for Incoming Radio Messages
-To monitor strings coming from the radio, you can echo the local rx pipeline:
+**2. Start the UAV Command Parser**
 ```bash
-ros2 topic echo /radio_rx
+# This translates the raw radio strings into native ROS2 geometry/command messages
+ros2 run ugv_radio_bridge uav_command_parser_node
 ```
-*Note: the node will not publish to the topic unless a terminal newline character `\n` is detected over the serial connection.*
+
+## How to Listen and Test (The Test Node)
+
+We have provided a dedicated mockup tool called `uav_test_node`. It subscribes directly to the native `/goto` and `/land` outputs produced by the parser and logs them neatly to the terminal console so you can verify that packets are being received correctly.
+
+To start listening, open a new terminal and run:
+```bash
+ros2 run ugv_radio_bridge uav_test_node
+```
+Leave it running! If coordinates or land commands come through the radio from a remote UGV/UAV, they will print out here cleanly.
+
+## How to Autonomously Emit Data (The Example Sender)
+
+If you'd like to simulate an onboard flight controller publishing live coordinates out to the bridge automatically without having to type terminal commands manually, we've provided a boilerplate sender node! 
+
+To run it, open a new terminal:
+```bash
+ros2 run ugv_radio_bridge uav_example_sender_node
+```
+*(This node automatically generates and publishes `Twist` structures every 5 seconds, and an `Empty` landing payload every 15 seconds straight into the parser pipeline!)*
+
+## Live Interactive Testing
+
+If you don't want to use standard `ros2 topic pub` commands, you can use the built-in interactive terminal mockup!
+```bash
+ros2 run ugv_radio_bridge uav_interactive_sender_node
+```
+This spawns a clean `>>` prompt where you can simply type `land` or coordinates like `10.5,5.2,2.0` and hit enter. It takes your raw strings, generates the native ROS Twist/Empty structures, and fires them into your parser framework seamlessly.
+
+## How to Send Coordinates and Commands
+
+Instead of dealing with raw strings yourself, you can now natively send structured ROS messages to the parser, which will serialize them properly and trigger the radio transmission automatically.
+
+### 1. Send Coordinates (GOTO)
+Publish a `geometry_msgs/msg/Twist` message to the `/send_goto` topic:
+```bash
+ros2 topic pub --once /send_goto geometry_msgs/msg/Twist "{linear: {x: 10.0, y: 5.0, z: 2.0}}"
+```
+*The parser node will catch this, parse it into `GOTO:10.0,5.0,2.0`, and transmit it over the serial link.*
+
+### 2. Send the Land Command
+Publish an `std_msgs/msg/Empty` message to the `/send_land` topic:
+```bash
+ros2 topic pub --once /send_land std_msgs/msg/Empty "{}"
+```
+*The parser will catch this and transmit `CMD:LAND` to the remote radios.*
+
+*(Note: if you instead want to test the raw string connection directly without the geometry parsing overhead, you can still publish raw strings directly to `/radio_tx` and echo `/radio_rx`)*
+
+## Integrating With Your Own Nodes (C++ Example)
+
+If you are writing your own flight controller or navigation node and want to bridge it to this radio network natively, you don't need to deal with strings! Simply create standard ROS2 Publishers and Subscriptions to pass data into the parsing pipeline.
+
+**To Transmit Data Over Radio:**
+Publish native ROS types to `/send_goto` and `/send_land`:
+```cpp
+// 1. Include the libraries
+#include <geometry_msgs/msg/twist.hpp>
+#include <std_msgs/msg/empty.hpp>
+
+// 2. Create Publishers in your node's constructor
+auto pub_goto = this->create_publisher<geometry_msgs::msg::Twist>("send_goto", 10);
+auto pub_land = this->create_publisher<std_msgs::msg::Empty>("send_land", 10);
+
+// 3. Publish when ready! The parser serializes this and shoots it over the bridge.
+auto msg = geometry_msgs::msg::Twist();
+msg.linear.x = 10.0;
+pub_goto->publish(msg);
+```
+
+**To Receive Data From Radio:**
+Create subscriptions that listen to `/goto` and `/land`:
+```cpp
+// Create Subscriptions in your node's constructor
+auto sub_goto = this->create_subscription<geometry_msgs::msg::Twist>(
+    "goto", 10,
+    [](const geometry_msgs::msg::Twist::SharedPtr msg) {
+        // Remote UGV mapped Twist coordinates over the radio! 
+        // Feed msg->linear.x/y/z to your flight loop here.
+    }
+);
+
+auto sub_land = this->create_subscription<std_msgs::msg::Empty>(
+    "land", 10,
+    [](const std_msgs::msg::Empty::SharedPtr msg) {
+        // Remote UGV sent LAND command over the radio! Trigger sequence.
+    }
+);
+```
 
 ## Additional Information
 - **Baud Rate:** Defaults to `57600`, which is the standard for most telemetry radios. You can override this using the `baud_rate` ROS parameter:
