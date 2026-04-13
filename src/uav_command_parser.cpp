@@ -17,6 +17,7 @@ public:
          */
         pub_goto_ = this->create_publisher<geometry_msgs::msg::Twist>("goto", 10);
         pub_land_ = this->create_publisher<std_msgs::msg::Empty>("land", 10);
+        pub_start_ = this->create_publisher<std_msgs::msg::Empty>("start", 10);
 
         // Publisher to transmit strings out over the raw radio interface
         pub_radio_tx_ = this->create_publisher<std_msgs::msg::String>("radio_tx", 10);
@@ -40,6 +41,11 @@ public:
         sub_send_land_ = this->create_subscription<std_msgs::msg::Empty>(
             "send_land", 10,
             std::bind(&UAVCommandParserNode::send_land_callback, this, std::placeholders::_1)
+        );
+
+        sub_send_start_ = this->create_subscription<std_msgs::msg::Empty>(
+            "send_start", 10,
+            std::bind(&UAVCommandParserNode::send_start_callback, this, std::placeholders::_1)
         );
 
         RCLCPP_INFO(this->get_logger(), "UAV Command Parser started.");
@@ -85,6 +91,10 @@ private:
             } catch (const std::exception& e) {
                 RCLCPP_ERROR(this->get_logger(), "Failed to parse GOTO packet coordinates: %s", e.what());
             }
+        }
+        else if (data.rfind("CMD:START", 0) == 0) {
+            RCLCPP_INFO(this->get_logger(), "Parsed START over radio. Triggering '/start'.");
+            pub_start_->publish(std_msgs::msg::Empty());
         }
         else {
             RCLCPP_WARN(this->get_logger(), "Received unknown string format: %s", data.c_str());
